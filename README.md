@@ -12,7 +12,7 @@
 ## 使用方式
 在`Podfile`里添加此行内容：
 ```
-pod 'DVVWeChatH5PayInterceptor', :git => 'https://github.com/devdawei/DVVWeChatH5PayInterceptor.git', :tag => 'v1.0.0'
+pod 'DVVWeChatH5PayInterceptor', :git => 'https://github.com/devdawei/DVVWeChatH5PayInterceptor.git', :tag => '1.0.0'
 ```
 
 然后在`Terminal`中`cd`到工程目录，执行如下命令：
