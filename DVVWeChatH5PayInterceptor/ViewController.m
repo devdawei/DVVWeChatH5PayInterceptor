@@ -71,7 +71,7 @@
 }
 
 - (void)weChatH5PayInterceptorWithRequest:(NSURLRequest *)request completionHandler:(void(^)(BOOL))completionHandler {
-    DVVWeChatH5PayInterceptorModel *model = [DVVWeChatH5PayInterceptor weChatH5PayInterceptorWithURL:request.URL customSchemePrefix:WeChatH5PayCustomSchemePrefix];
+    DVVWeChatH5PayInterceptorModel *model = [DVVWeChatH5PayInterceptor weChatH5PayInterceptorWithURL:request.URL customSchemePrefix:WeChatH5PayCustomSchemePrefix ignoreHosts:nil];
     if (model.isWeChatH5Pay) {
         if (completionHandler) completionHandler(YES);
         // 处理微信H5支付

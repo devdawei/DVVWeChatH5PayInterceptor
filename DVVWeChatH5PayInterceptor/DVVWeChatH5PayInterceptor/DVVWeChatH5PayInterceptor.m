@@ -14,7 +14,7 @@
 
 @implementation DVVWeChatH5PayInterceptor
 
-+ (DVVWeChatH5PayInterceptorModel *)weChatH5PayInterceptorWithURL:(NSURL *)url customSchemePrefix:(NSString *)customSchemePrefix {
++ (DVVWeChatH5PayInterceptorModel *)weChatH5PayInterceptorWithURL:(NSURL *)url customSchemePrefix:(NSString *)customSchemePrefix ignoreHosts:(NSString *)ignoreHosts {
     DVVWeChatH5PayInterceptorModel *model = nil;
     if ([url.host isEqualToString:@"wx.tenpay.com"] &&
         [url.path isEqualToString:@"/cgi-bin/mmpayweb-bin/checkmweb"] &&
@@ -26,6 +26,10 @@
             NSURL *rurl = [NSURL URLWithString:redirectURL];
             if (rurl) {
                 NSString *rhost = rurl.host;
+                if (ignoreHosts &&
+                    [ignoreHosts containsString:rhost]) {
+                    return nil;
+                }
                 if ([rhost hasPrefix:@"www."]) {
                     NSRange range = [rhost rangeOfString:@"."];
                     rhost = [rhost substringFromIndex:range.location + 1];

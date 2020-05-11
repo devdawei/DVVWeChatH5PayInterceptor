@@ -29,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 微信H5支付拦截处理
 /// @param url 即将加载的网址
 /// @param customSchemePrefix 自定义的 URLScheme 前缀标识（例如：xxx-wechatpay，xxx 需要具有 APP 的特有标识，防止和其他 APP 重复，导致从微信跳转回 APP 有问题）
-+ (DVVWeChatH5PayInterceptorModel *)weChatH5PayInterceptorWithURL:(NSURL *)url customSchemePrefix:(NSString *)customSchemePrefix;
+/// @param ignoreHosts 忽略列表（如果 redirect_url 的 host 包含在这个列表中，则不进行拦截处理，防止微信接口有变动导致支付有问题。这个参数应该做成后台可配置的形式，例如每次启动 APP 如果会调用一个获取某些配置的接口，则可以将忽略列表的配置放到这个接口）
++ (DVVWeChatH5PayInterceptorModel *)weChatH5PayInterceptorWithURL:(NSURL *)url customSchemePrefix:(NSString *)customSchemePrefix ignoreHosts:(NSString * _Nullable)ignoreHosts;
 
 @end
 
